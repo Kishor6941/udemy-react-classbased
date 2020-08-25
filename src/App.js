@@ -1,25 +1,32 @@
 import React, { Component } from "react";
 import "./App.css";
 import Person from "./person/Person";
-import person from "./person/Person";
-
 class App extends Component {
   state = {
     persons: [
-      { name: "Kishor", age: 24 },
-      { name: "Sunil", age: 27 },
-      { name: "Rajveer", age: 3 },
+      { id: 1, name: "Kishor", age: 24 },
+      { id: 2, name: "Sunil", age: 27 },
+      { id: 3, name: "Rajveer", age: 3 },
     ],
     showperson: false,
   };
 
-  Namechanged = (event) => {
+  Namechanged = (event, id) => {
+    const personIndex = this.state.persons.findIndex((p) => {
+      return p.id === id;
+    });
+
+    const person = {
+      ...this.state.persons[personIndex],
+    };
+
+    person.name = event.target.value;
+
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+
     this.setState({
-      persons: [
-        { name: "Kishor", age: 23 },
-        { name: event.target.value, age: 26 },
-        { name: "Rajveer Phawade", age: 6 },
-      ],
+      persons: persons,
     });
   };
 
@@ -30,7 +37,6 @@ class App extends Component {
 
   deletePersonHandler = (personIndex) => {
     /* const persons = this.state.persons.slice(); */
-
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
@@ -41,9 +47,13 @@ class App extends Component {
       backgroundColor: "blue",
       font: "inherit",
       border: "1px solid blue",
-      padding: "8px",
+      padding: "10px",
       cursor: "pointer",
       color: "white",
+      ":hover": {
+        backgroundColor: "lightgreen",
+        color: "black",
+      },
     };
 
     let persons = null;
@@ -56,16 +66,30 @@ class App extends Component {
                 click={() => this.deletePersonHandler(index)}
                 name={person.name}
                 age={person.age}
+                key={person.id}
+                changed={(event) => this.Namechanged(event, person.id)}
               />
             );
           })}
         </div>
       );
+      style.backgroundColor = "red";
+      style[":hover"] = {
+        backgroundColor: "lightred",
+        color: "black",
+      };
     }
-
+    let classes = []; //["red", "bold"].join(" ");
+    if (this.state.persons.length <= 2) {
+      classes.push("red");
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold");
+    }
     return (
       <div className="App">
         <h1>I'm create react App</h1>
+        <p className={classes.join(" ")}>This is really working</p>
         {/* <button style={style} onClick={this.SwithNameHander.bind(this, "KSP")}> */}
         {/* <button onClick={() => this.SwithNameHander("Kishor!!!!")}> */}
         <button style={style} onClick={this.togglePersonHandler}>
