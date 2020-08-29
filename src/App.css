@@ -2,3 +2,9 @@
   text-align: center;
   box-sizing: border-box;
 }
+.red {
+  color: red;
+}
+.bold {
+  font-weight: bold;
+}
