@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import Person from "./person/Person";
+import Mounting from "./React lifeCycle/Mounting";
+import Updating from "./React lifeCycle/Updating";
 
 class App extends Component {
   state = {
@@ -44,7 +46,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>I'm create react App</h1>
+        <h1>{this.props.apptitle}</h1>
         <button style={style} onClick={this.SwithNameHander.bind(this, "KSP")}>
           {/* <button onClick={() => this.SwithNameHander("Kishor!!!!")}> */}
           Switch Name
@@ -53,6 +55,7 @@ class App extends Component {
           name={this.state.persons[0].name}
           age={this.state.persons[0].age}
           click={this.SwithNameHander.bind(this, "KSP!!!")}
+          title={this.props.apptitle}
         />
 
         <Person
@@ -66,6 +69,9 @@ class App extends Component {
           name={this.state.persons[2].name}
           age={this.state.persons[2].age}
         />
+
+        <Mounting favcol="blue" />
+        <Updating />
       </div>
     );
     /* 
