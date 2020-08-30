@@ -3,8 +3,13 @@ import "./App.css";
 import Person from "./person/Person";
 import Mounting from "./React lifeCycle/Mounting";
 import Updating from "./React lifeCycle/Updating";
+
+import Inform from "./Ref/Inform";
+import RefinHook from "./Ref/RefinHook";
+
 import Men1 from "./person/HOC/Men1";
 import Men2 from "./person/HOC/Men2";
+
 
 
 class App extends Component {
@@ -41,12 +46,14 @@ class App extends Component {
     this.setState({ showperson: !doesShow });
   };
 
+
   deletePersonHandler = (personIndex) => {
     /* const persons = this.state.persons.slice(); */
     const persons = [...this.state.persons];
     persons.splice(personIndex, 1);
     this.setState({ persons: persons });
   };
+
 
   render() {
     const style = {
@@ -94,6 +101,9 @@ class App extends Component {
     }
     return (
       <div className="App">
+
+        <RefinHook />
+        {/* <Inform /> */}
 
         <h1>{this.props.apptitle}</h1>
         <button style={style} onClick={this.SwithNameHander.bind(this, "KSP")}>

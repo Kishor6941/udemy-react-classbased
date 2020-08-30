@@ -1,5 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Person.css";
+
+import PropTypes from "prop-types";
+
+const Person = (props) => {
+
 import styled from "styled-components";
 
 const StyleDiv = styled.div`
@@ -18,6 +23,7 @@ const person = (props) => {
       width: "450px",
     },
   }; */
+
   return (
     /*     <div className="Person" style={style}>
      */
@@ -31,5 +37,11 @@ const person = (props) => {
     </StyleDiv>
   );
 };
+Person.propTypes = {
+  click: PropTypes.func,
+  name: PropTypes.string,
+  age: PropTypes.number,
+  changed: PropTypes.func,
+};
 
-export default person;
+export default Person;
