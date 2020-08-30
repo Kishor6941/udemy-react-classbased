@@ -3,6 +3,8 @@ import "./App.css";
 import Person from "./person/Person";
 import Mounting from "./React lifeCycle/Mounting";
 import Updating from "./React lifeCycle/Updating";
+import Men1 from "./person/HOC/Men1";
+import Men2 from "./person/HOC/Men2";
 
 
 class App extends Component {
@@ -119,6 +121,10 @@ class App extends Component {
 
         <Mounting favcol="blue" />
         <Updating />
+
+        <Men1 />
+        <Men2 />
+
 
         <h1>I'm create react App</h1>
         <p className={classes.join(" ")}>This is really working</p>
