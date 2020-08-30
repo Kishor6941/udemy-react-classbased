@@ -3,7 +3,8 @@ import "./App.css";
 import Person from "./person/Person";
 import Mounting from "./React lifeCycle/Mounting";
 import Updating from "./React lifeCycle/Updating";
-
+import Inform from "./Ref/Inform";
+import RefinHook from "./Ref/RefinHook";
 class App extends Component {
   state = {
     persons: [
@@ -34,6 +35,7 @@ class App extends Component {
       ],
     });
   };
+
   render() {
     const style = {
       backgroundColor: "blue",
@@ -46,6 +48,8 @@ class App extends Component {
 
     return (
       <div className="App">
+        <RefinHook />
+        {/* <Inform /> */}
         <h1>{this.props.apptitle}</h1>
         <button style={style} onClick={this.SwithNameHander.bind(this, "KSP")}>
           {/* <button onClick={() => this.SwithNameHander("Kishor!!!!")}> */}
